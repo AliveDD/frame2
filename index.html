@@ -27,7 +27,7 @@
     window.addEventListener('message', receiveMessage, false);
     function receiveMessage(event) {
       if (event.origin === 'http://localhost:5757') {
-        console.log('frame two is received!');
+        console.info('Message received by second frame!');
         title.classList.add('active');
       }
     }
