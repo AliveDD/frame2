@@ -1,8 +1,35 @@
-<script>
-  window.addEventListener('message', receiveMessage, false);
-  function receiveMessage(event) {
-    if (event.origin === 'http://localhost:5757') {
-      console.log('frame 2 is received!');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>frame two</title>
+  <style>
+    html, body {
+      height: 100%;
     }
-  }
-</script>
+    body {
+      font-size: 10vw;
+      line-height: 62vh;
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Helvetica, Arial, sans-serif;
+      text-align: center;
+      font-weight: 100;
+    }
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <span class="title">frame two</span>
+  <script>
+    var title = document.getElementsByClassName('title')[0];
+    window.addEventListener('message', receiveMessage, false);
+    function receiveMessage(event) {
+      if (event.origin === 'http://localhost:5757') {
+        console.log('frame two is received!');
+        title.classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>
