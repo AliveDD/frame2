@@ -15,20 +15,30 @@
       font-weight: 100;
       margin: 0;
     }
-    .active {
+    .title {
+      transition: color 1s linear;
+    }
+    .title.active {
       color: blue;
     }
   </style>
 </head>
 <body>
   <span class="title">frame two</span>
+
   <script>
     var title = document.getElementsByClassName('title')[0];
     window.addEventListener('message', receiveMessage, false);
+
     function receiveMessage(event) {
       if (event.origin === 'http://localhost:5757') {
-        console.info('Message received by second frame!');
-        title.classList.add('active');
+        if (event.data.visible) {
+          title.classList.add('active');
+          console.log('frame-two is visible');
+        } else {
+          title.classList.remove('active');
+          console.log('frame-two not visible');
+        }
       }
     }
   </script>
