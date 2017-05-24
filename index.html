@@ -31,7 +31,7 @@
     window.addEventListener('message', receiveMessage, false);
 
     function receiveMessage(event) {
-      if (event.origin === 'http://localhost:5757') {
+      if (event.origin === '*') {
         if (event.data.visible) {
           title.classList.add('active');
           console.log('frame-two is visible');
